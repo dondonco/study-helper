@@ -5,7 +5,7 @@ const TaskTimer = ({ changeTimer }) => {
   //   const [hour, setHour] = useState(0);
   //   const [min, setMin] = useState(0);
   //   const [sec, setSec] = useState(0);
-  const [timer, setTimer] = useState({ hour: 0, min: 0, sec: 0 });
+  const [time, setTime] = useState({ hour: 0, min: 0, sec: 0 });
   //   useEffect(() => {
   //     value(hour, min, sec);
   //   }, [hour, min, sec, value]);
@@ -16,36 +16,35 @@ const TaskTimer = ({ changeTimer }) => {
     // if (toChange === "Hour") setHour(value);
     // if (toChange === "Min") setMin(value);
     // if (toChange === "Sec") setSec(value);
-    setTimer((prev) => {
-      const newTimer = { ...prev, [type]: value };
+    setTime((prev) => {
+      const newTimer = { ...prev, [type]: Number(value) };
       console.log(newTimer);
       changeTimer(newTimer);
       return newTimer;
     });
   };
   return (
-    <div>
-      <h1>Task Timer</h1>
-      <div className="container d-flex">
+    <div className="container">
+      <div className="d-flex justify-content-center">
         <Timer
           min={0}
           max={24}
           type={"hour"}
-          value={timer.hour}
+          value={time.hour}
           change={onValueChange}
         />
         <Timer
           min={0}
           max={60}
           type={"min"}
-          value={timer.min}
+          value={time.min}
           change={onValueChange}
         />
         <Timer
           min={0}
           max={60}
           type={"sec"}
-          value={timer.sec}
+          value={time.sec}
           change={onValueChange}
         />
       </div>

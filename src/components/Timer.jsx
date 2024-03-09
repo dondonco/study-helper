@@ -8,8 +8,9 @@ const Timer = ({ min, max, type, value, change }) => {
     change(num, type);
   };
   return (
-    <div>
+    <div className="m-1 p-1">
       <input
+        className="form-control"
         type="number"
         min={min}
         max={max}
